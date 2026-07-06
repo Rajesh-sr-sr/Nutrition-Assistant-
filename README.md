@@ -6,7 +6,7 @@ A full-stack **MERN (MongoDB, Express.js, React.js, Node.js)** web application t
 
 ## 📖 Overview
 
-Nutrition Assistant is designed to assist users in managing their daily nutritional intake through an interactive and user-friendly interface. The application allows users to register, track meals, calculate BMI and calorie requirements, receive personalized nutrition recommendations, and monitor their daily dietary progress.
+Nutrition Assistant is designed to assist users in managing their daily nutritional intake through an interactive and user-friendly interface. The application allows users to register, track meals, calculate BMI and calorie requirements, receive personalized nutrition recommendations, and monitor their daily dietary progress
 
 The project follows the **Model-View-Controller (MVC)** architecture, providing a clean, modular, scalable, and maintainable codebase.
 
