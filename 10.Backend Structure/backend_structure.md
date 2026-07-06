@@ -1,53 +1,43 @@
-# BACKEND STRUCTURE
+# Backend Structure
 
-## Project Name
+## Project Overview
 
-**Nutrition Assistant – Personalized Nutrition Management System**
+The **Nutrition Assistant – Personalized Nutrition Management System** backend is developed using the **MERN Stack** (MongoDB, Express.js, React.js, and Node.js). It provides RESTful APIs for user authentication, nutrition management, meal tracking, calorie calculations, and daily nutrition logging.
 
-## Technology Stack
-
-**Node.js, Express.js, MongoDB (MERN Stack)**
+The project follows the **Model-View-Controller (MVC)** architecture to ensure a modular, scalable, and maintainable codebase. Application components are organized into separate folders for configuration, database models, controllers, routes, and middleware, making development and future enhancements easier.
 
 ---
 
-# Objective
+# Technology Stack
 
-The backend directory structure of the Nutrition Assistant application defines the organization of files and modules required to build and run the Node.js/Express.js REST APIs. By separating configurations (`config`), database schemas (`models`), business logic (`controllers`), API routes (`routes`), middleware (`middleware`), and the application entry point (`server.js`), the project follows the Model-View-Controller (MVC) architecture, resulting in a clean, scalable, and maintainable backend.
-
----
-
-# Backend Technology Stack
-
-* **Node.js** – JavaScript runtime environment for executing server-side code.
-* **Express.js** – Lightweight framework for building RESTful APIs.
-* **MongoDB** – NoSQL database for storing user, meal, and nutrition information.
-* **Mongoose** – ODM (Object Data Modeling) library for MongoDB.
-* **JWT (JSON Web Token)** – Secure user authentication and authorization.
-* **bcryptjs** – Password encryption using secure hashing algorithms.
+* **Node.js** – Server-side JavaScript runtime.
+* **Express.js** – Framework for building RESTful APIs.
+* **MongoDB** – NoSQL database for storing application data.
+* **Mongoose** – ODM library for MongoDB.
+* **JWT (JSON Web Token)** – User authentication and route protection.
+* **bcryptjs** – Password hashing for secure authentication.
 * **dotenv** – Environment variable management.
-* **Cors** – Enables secure communication between frontend and backend.
+* **CORS** – Enables secure communication between frontend and backend.
 
 ---
 
-# Backend Folder Structure
-
-Below is the directory structure of the backend **Server** folder.
+# Backend Directory Structure
 
 ```text
 Server/
 │
 ├── package.json              # Backend dependencies
-├── server.js                 # Express application entry point
+├── server.js                 # Application entry point
 │
 ├── config/
-│   └── db.js                 # MongoDB database connection
+│   └── db.js                 # MongoDB connection configuration
 │
 ├── models/
-│   ├── UserModel.js          # User information schema
-│   ├── MealModel.js          # Meal details schema
-│   ├── FoodModel.js          # Food items schema
-│   ├── NutritionModel.js     # Nutrition information schema
-│   └── DailyLogModel.js      # Daily calorie tracking schema
+│   ├── UserModel.js          # User schema
+│   ├── MealModel.js          # Meal schema
+│   ├── FoodModel.js          # Food schema
+│   ├── NutritionModel.js     # Nutrition schema
+│   └── DailyLogModel.js      # Daily nutrition log schema
 │
 ├── controllers/
 │   ├── UserController.js
@@ -72,33 +62,47 @@ Server/
 
 ---
 
-# Subdirectory Explanations
+# Folder Description
 
-## `server.js` (Server Initialization)
+## `server.js`
 
-Acts as the entry point of the backend application.
+The main entry point of the backend application.
 
 **Responsibilities**
 
-* Initializes the Express server.
-* Connects to MongoDB.
-* Registers middleware.
-* Loads API routes.
-* Starts the application on the configured server port.
+* Initialize the Express server.
+* Connect to MongoDB.
+* Configure middleware.
+* Register API routes.
+* Start the server on the configured port.
 
 ---
 
-## Models Folder (`models/`)
+## `config/`
 
-Stores all Mongoose schemas used by the application.
+Contains application configuration files.
+
+### `db.js`
+
+Responsible for:
+
+* Connecting to MongoDB using Mongoose.
+* Managing database connection settings.
+* Handling connection errors.
+
+---
+
+## `models/`
+
+Contains all Mongoose schemas used in the application.
 
 ### UserModel
 
-Stores user registration details.
+Stores user information such as:
 
 * Name
 * Email
-* Password
+* Password (hashed)
 * Age
 * Height
 * Weight
@@ -107,7 +111,7 @@ Stores user registration details.
 
 ### MealModel
 
-Stores user meal information.
+Stores meal-related information including:
 
 * Meal Name
 * Meal Type
@@ -117,7 +121,7 @@ Stores user meal information.
 
 ### FoodModel
 
-Contains food database information.
+Maintains the food database with nutritional values.
 
 * Food Name
 * Calories
@@ -128,16 +132,16 @@ Contains food database information.
 
 ### NutritionModel
 
-Stores nutritional calculations.
+Stores calculated nutrition data.
 
 * BMI
-* Daily Calories
+* Daily Calorie Requirement
 * Protein Requirement
-* Water Intake
+* Daily Water Intake
 
 ### DailyLogModel
 
-Stores daily nutrition logs.
+Maintains users' daily nutrition records.
 
 * Meals Consumed
 * Calories
@@ -148,70 +152,59 @@ Stores daily nutrition logs.
 
 ---
 
-## Controllers Folder (`controllers/`)
+## `controllers/`
 
-Contains the business logic for processing incoming API requests.
+Contains the business logic for processing API requests.
 
-**Responsibilities**
+Responsibilities include:
 
-* Validate user input.
-* Process authentication.
-* Calculate BMI and calorie requirements.
-* Manage meal plans.
-* Retrieve nutrition information.
-* Generate personalized recommendations.
-* Process CRUD operations.
-
----
-
-## Routes Folder (`routes/`)
-
-Maps HTTP requests to controller functions.
-
-### Sample API Routes
-
-* `POST /api/users/register` → Register new users.
-* `POST /api/users/login` → Authenticate users.
-* `GET /api/users/profile` → Retrieve user profile.
-* `POST /api/meals/add` → Add meal.
-* `GET /api/meals` → View meal history.
-* `POST /api/nutrition/calculate` → Calculate BMI and calories.
-* `GET /api/recommendations` → Get personalized diet suggestions.
+* User authentication
+* Input validation
+* BMI and calorie calculations
+* Meal management
+* Nutrition calculations
+* CRUD operations
+* Personalized nutrition recommendations
 
 ---
 
-## Middleware Folder (`middleware/`)
+## `routes/`
 
-Contains reusable middleware functions.
+Defines API endpoints and maps requests to controller functions.
 
-### authMiddleware
+### Sample Endpoints
+
+| Method | Endpoint                   | Description                                |
+| ------ | -------------------------- | ------------------------------------------ |
+| POST   | `/api/users/register`      | Register a new user                        |
+| POST   | `/api/users/login`         | Authenticate a user                        |
+| GET    | `/api/users/profile`       | Retrieve user profile                      |
+| POST   | `/api/meals/add`           | Add a meal                                 |
+| GET    | `/api/meals`               | Get meal history                           |
+| POST   | `/api/nutrition/calculate` | Calculate BMI and calorie requirements     |
+| GET    | `/api/recommendations`     | Get personalized nutrition recommendations |
+
+---
+
+## `middleware/`
+
+Contains reusable middleware components.
+
+### `authMiddleware`
 
 * Verifies JWT tokens.
 * Protects private routes.
-* Adds authenticated user details to the request.
+* Attaches authenticated user information to requests.
 
-### errorMiddleware
+### `errorMiddleware`
 
 * Handles application errors.
-* Returns standardized API responses.
+* Returns standardized JSON error responses.
+* Improves API consistency.
 
 ---
 
-## Config Folder (`config/`)
-
-Contains project configuration files.
-
-### db.js
-
-* Connects the application to MongoDB.
-* Configures Mongoose connection settings.
-* Handles database connection errors.
-
----
-
-# Backend API Workflow
-
-The following diagram illustrates how an API request is processed within the Nutrition Assistant backend.
+# API Request Flow
 
 ```mermaid
 sequenceDiagram
@@ -220,53 +213,54 @@ sequenceDiagram
     actor User as React Frontend
 
     participant Route as Express Routes
-
     participant Auth as Authentication Middleware
-
     participant Controller as Controllers
-
     participant Model as Mongoose Models
-
     database MongoDB
 
     User->>Route: API Request
-    Route->>Auth: Verify JWT Token
+    Route->>Auth: Verify JWT
 
-    Auth-->>Route: Authentication Success
+    Auth-->>Route: Authentication Successful
 
     Route->>Controller: Execute Business Logic
-
-    Controller->>Model: Database Operation
+    Controller->>Model: Perform Database Operation
 
     Model->>MongoDB: Read / Write Data
-
-    MongoDB-->>Model: Database Response
+    MongoDB-->>Model: Return Result
 
     Model-->>Controller: Return Data
-
     Controller-->>User: JSON Response
 ```
 
 ---
 
-# Structural Advantages
+# Key Features
 
-* **Modular Architecture** – Keeps models, controllers, routes, and middleware separated.
-* **Scalable Design** – Easy to add new nutrition modules and APIs.
-* **Secure Authentication** – JWT protects private user resources.
-* **Reusable Components** – Middleware and controllers reduce code duplication.
-* **Easy Maintenance** – Organized project structure improves readability.
-* **MVC Pattern** – Separates business logic from routing and data management.
-* **Database Flexibility** – MongoDB easily stores structured and semi-structured nutrition data.
-
----
-
-# Expected Outcome
-
-Successfully designed the backend structure of the **Nutrition Assistant** application using **Node.js**, **Express.js**, **MongoDB**, and the **MVC architectural pattern**. The backend supports secure authentication, nutrition management, meal tracking, calorie calculations, and scalable RESTful API development while maintaining a clean and maintainable codebase.
+* Modular MVC architecture
+* RESTful API design
+* Secure JWT authentication
+* Password hashing using bcrypt
+* MongoDB integration with Mongoose
+* Meal and nutrition management
+* BMI and calorie calculations
+* Daily nutrition tracking
+* Reusable middleware components
+* Scalable and maintainable project structure
 
 ---
 
-**Project:** Nutrition Assistant – Personalized Nutrition Management System
+# Benefits
 
-**Technology Stack:** MERN Stack (MongoDB, Express.js, React.js, Node.js)
+* Clean separation of concerns through MVC.
+* Easy to maintain and extend.
+* Secure authentication and authorization.
+* Organized project structure for collaborative development.
+* Simplified database management using Mongoose.
+* Flexible architecture for adding future nutrition-related features.
+
+---
+
+# Outcome
+
+The backend provides a robust foundation for the **Nutrition Assistant – Personalized Nutrition Management System**, enabling secure user authentication, nutrition calculations, meal management, daily nutrition tracking, and scalable RESTful API development while maintaining a clean and well-organized project architecture.
