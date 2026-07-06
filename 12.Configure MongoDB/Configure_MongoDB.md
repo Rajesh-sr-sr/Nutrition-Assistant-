@@ -1,93 +1,100 @@
-# CONFIGURE MONGODB
+# MongoDB Configuration
 
-## Project Name
+## Project Overview
 
-**Nutrition Assistant – Personalized Nutrition Management System**
+This document explains how to configure **MongoDB** for the **Nutrition Assistant – Personalized Nutrition Management System**. The backend uses **Mongoose** to establish a secure connection between the Node.js/Express.js application and the MongoDB database.
 
-## Technology Stack
-
-MongoDB, Mongoose, Node.js, Express.js (MERN Stack)
+The database stores user information, meal records, food details, nutrition calculations, and daily nutrition logs, providing persistent storage for the application's core functionality.
 
 ---
 
-# Objective
+# Technology Stack
 
-The MongoDB configuration is responsible for establishing a secure connection between the Nutrition Assistant backend application and the MongoDB database. Using **Mongoose**, the application communicates with the database to store and retrieve user information, meal records, nutrition data, and personalized diet recommendations.
+* **MongoDB** – NoSQL database
+* **Mongoose** – Object Data Modeling (ODM) library
+* **Node.js** – JavaScript runtime
+* **Express.js** – Backend framework
+* **dotenv** – Environment variable management
 
 ---
 
 # Prerequisites
 
-Before configuring MongoDB, ensure the following are installed:
+Before configuring the database, ensure the following are installed:
 
-- Node.js
-- npm (Node Package Manager)
-- MongoDB Atlas Account (or Local MongoDB Server)
-- Visual Studio Code
+* Node.js
+* npm (Node Package Manager)
+* MongoDB Atlas account or a local MongoDB server
+* Visual Studio Code
 
 ---
 
-# Step 1: Install Mongoose
+# Installation
 
-Open the **Server** folder in the Visual Studio Code terminal and install Mongoose.
+## 1. Install Mongoose
 
-```bash
+Navigate to the **Server** directory and install Mongoose.
+
+```bash id="r8dk4m"
 npm install mongoose
 ```
 
 ---
 
-# Step 2: Install dotenv
+## 2. Install dotenv
 
-Install **dotenv** to securely manage environment variables.
+Install **dotenv** to manage environment variables securely.
 
-```bash
+```bash id="6z3w1k"
 npm install dotenv
 ```
 
 ---
 
-# Step 3: Create Environment File
+## 3. Create the Environment File
 
-Inside the **Server** folder, create a file named:
+Create a `.env` file inside the **Server** directory.
 
-```text
-.env
+```text id="w8v2e7"
+Server/
+└── .env
 ```
 
-Add your MongoDB connection string.
+Add the following environment variables:
 
-```env
+```env id="0t9o2l"
 MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/NutritionAssistant
 PORT=5000
 JWT_SECRET=your_secret_key
 ```
 
+> **Note:** Never commit your `.env` file or sensitive credentials to a public repository.
+
 ---
 
-# Step 4: Create Database Configuration
+## 4. Configure the Database Connection
 
-Inside the **config** folder create:
+Create the database configuration file.
 
-```text
+```text id="8l1m5n"
 config/
 └── db.js
 ```
 
 ### Responsibilities
 
-- Connect to MongoDB Atlas
-- Initialize Mongoose
-- Handle connection errors
-- Export database connection
+* Connect to MongoDB using Mongoose.
+* Load the MongoDB connection string from environment variables.
+* Handle database connection errors.
+* Export the database connection function.
 
 ---
 
-# Step 5: Connect Database in server.js
+## 5. Connect MongoDB in `server.js`
 
-Import the database connection inside **server.js**.
+Import and initialize the database connection before starting the Express server.
 
-```javascript
+```javascript id="l5g7c1"
 const connectDB = require("./config/db");
 
 connectDB();
@@ -95,9 +102,9 @@ connectDB();
 
 ---
 
-# MongoDB Folder Structure
+# Project Structure
 
-```text
+```text id="q4n7y2"
 Server/
 │
 ├── config/
@@ -113,112 +120,102 @@ Server/
 
 # Database Connection Workflow
 
-```mermaid
+```mermaid id="f6a8d3"
 graph TD
 
-A[Start Express Server]
-
+A[Start Application]
 A --> B[Load Environment Variables]
-
-B --> C[Read MongoDB Connection String]
-
-C --> D[Mongoose Connect]
-
+B --> C[Read MONGO_URI]
+C --> D[Connect with Mongoose]
 D --> E[(MongoDB Database)]
-
-E --> F[Connection Successful]
-
+E --> F[Connection Established]
 F --> G[Start Express Server]
-
-style A fill:#1c2d5a,color:#fff
-style B fill:#4CAF50,color:#fff
-style C fill:#FF9800,color:#fff
-style D fill:#9C27B0,color:#fff
-style E fill:#47A248,color:#fff
-style F fill:#2196F3,color:#fff
-style G fill:#1c2d5a,color:#fff
 ```
 
 ---
 
-# Database Responsibilities
+# Database Collections
 
-The MongoDB database stores the following information:
+The application stores data in the following collections.
 
-## Users Collection
+## Users
 
-- Name
-- Email
-- Password
-- Age
-- Height
-- Weight
-- Gender
-- Activity Level
+Stores user profile information.
 
----
-
-## Meals Collection
-
-- Meal Name
-- Meal Type
-- Calories
-- Protein
-- Carbohydrates
-- Fat
+* Name
+* Email
+* Password (hashed)
+* Age
+* Height
+* Weight
+* Gender
+* Activity Level
 
 ---
 
-## Food Collection
+## Meals
 
-- Food Name
-- Serving Size
-- Calories
-- Protein
-- Carbohydrates
-- Fat
-- Fiber
+Stores meal records.
 
----
-
-## Nutrition Collection
-
-- BMI
-- Daily Calories
-- Water Intake
-- Nutrition Summary
+* Meal Name
+* Meal Type
+* Calories
+* Protein
+* Carbohydrates
+* Fat
 
 ---
 
-## Daily Logs Collection
+## Foods
 
-- Daily Meals
-- Calories Consumed
-- Protein Intake
-- Carbohydrates
-- Fat
-- Date
+Maintains the food database.
 
----
-
-# Advantages of Using MongoDB
-
-- NoSQL document-oriented database
-- Highly scalable
-- Flexible schema design
-- Fast read and write operations
-- Easy integration with Mongoose
-- Efficient storage of nutrition and meal records
-- Supports cloud deployment using MongoDB Atlas
+* Food Name
+* Serving Size
+* Calories
+* Protein
+* Carbohydrates
+* Fat
+* Fiber
 
 ---
 
-# Expected Outcome
+## Nutrition
 
-Successfully configured MongoDB for the Nutrition Assistant backend using Mongoose. The application can securely connect to the database, store user information, manage meal records, perform nutrition tracking, and retrieve personalized diet recommendations.
+Stores nutrition-related calculations.
+
+* BMI
+* Daily Calorie Requirement
+* Water Intake
+* Nutrition Summary
 
 ---
 
-**Project:** Nutrition Assistant – Personalized Nutrition Management System
+## Daily Logs
 
-**Technology Stack:** MERN Stack (MongoDB, Express.js, React.js, Node.js)
+Maintains users' daily nutrition history.
+
+* Meals Consumed
+* Calories Consumed
+* Protein Intake
+* Carbohydrates
+* Fat
+* Date
+
+---
+
+# Benefits of MongoDB
+
+* Flexible document-oriented NoSQL database.
+* Easy integration with Mongoose.
+* High scalability for growing datasets.
+* Fast read and write performance.
+* Supports cloud deployment with MongoDB Atlas.
+* Well suited for storing structured and semi-structured nutrition data.
+* Simplifies data management for users, meals, and nutrition tracking.
+
+---
+
+# Outcome
+
+MongoDB is successfully configured for the **Nutrition Assistant – Personalized Nutrition Management System** using **Mongoose**. The backend can securely connect to the database, manage user authentication, store meal and nutrition data, maintain daily logs, and support scalable RESTful API development.
