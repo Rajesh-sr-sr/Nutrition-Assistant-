@@ -1,10 +1,10 @@
-# 🥗 Nutrition Assistant – Personalized Nutrition Management System
+#  Nutrition Assistant – Personalized Nutrition Management System
 
 A full-stack **MERN (MongoDB, Express.js, React.js, Node.js)** web application that helps users maintain a healthy lifestyle by providing personalized nutrition guidance, meal planning, calorie tracking, BMI calculation, and diet recommendations.
 
 ---
 
-## 📖 Overview
+##  Overview
 
 Nutrition Assistant is designed to assist users in managing their daily nutritional intake through an interactive and user-friendly interface. The application allows users to register, track meals, calculate BMI and calorie requirements, receive personalized nutrition recommendations, and monitor their daily dietary progress
 
@@ -12,16 +12,16 @@ The project follows the **Model-View-Controller (MVC)** architecture, providing 
 
 ---
 
-# 🚀 Features
+#  Features
 
-### 👤 User Management
+###  User Management
 
 - User Registration
 - User Login
 - JWT Authentication
 - Profile Management
 
-### 🥗 Nutrition Management
+###  Nutrition Management
 
 - Meal Planner
 - Daily Meal Tracking
@@ -31,14 +31,14 @@ The project follows the **Model-View-Controller (MVC)** architecture, providing 
 - Personalized Diet Recommendations
 - Daily Nutrition Log
 
-### 📊 Dashboard
+###  Dashboard
 
 - Nutrition Summary
 - Daily Calories
 - Meal History
 - Progress Monitoring
 
-### 🔒 Security
+###  Security
 
 - JWT Authentication
 - Password Encryption (bcryptjs)
@@ -47,7 +47,7 @@ The project follows the **Model-View-Controller (MVC)** architecture, providing 
 
 ---
 
-# 🛠 Technology Stack
+#  Technology Stack
 
 ## Frontend
 
@@ -73,7 +73,7 @@ The project follows the **Model-View-Controller (MVC)** architecture, providing 
 
 ---
 
-# 🏗 Project Architecture
+#  Project Architecture
 
 ```
 Nutrition-Assistant
@@ -108,7 +108,7 @@ Nutrition-Assistant
 
 ---
 
-# ⚙ Installation
+#  Installation
 
 ## Clone Repository
 
@@ -124,7 +124,7 @@ cd Nutrition-Assistant
 
 ---
 
-# 📦 Install Frontend Dependencies
+#  Install Frontend Dependencies
 
 ```bash
 cd client
@@ -133,7 +133,7 @@ npm install
 
 ---
 
-# 📦 Install Backend Dependencies
+#  Install Backend Dependencies
 
 Open another terminal.
 
@@ -144,7 +144,7 @@ npm install
 
 ---
 
-# 🗄 Configure MongoDB
+#  Configure MongoDB
 
 Create a **.env** file inside the **server** folder.
 
@@ -158,7 +158,7 @@ JWT_SECRET=yourSecretKey
 
 ---
 
-# ▶ Running the Application
+#  Running the Application
 
 ## Start Backend
 
@@ -186,7 +186,7 @@ npm run dev
 
 ---
 
-# 🌐 Application URLs
+#  Application URLs
 
 Frontend
 
@@ -208,7 +208,7 @@ mongodb://127.0.0.1:27017
 
 ---
 
-# 🔄 Application Workflow
+#  Application Workflow
 
 ```
 User
@@ -240,7 +240,7 @@ React UI Updates
 
 ---
 
-# 📁 Folder Structure
+#  Folder Structure
 
 ## Client
 
@@ -262,7 +262,7 @@ React UI Updates
 
 ---
 
-# 📌 Main Modules
+#  Main Modules
 
 - User Authentication
 - Meal Planner
@@ -276,7 +276,7 @@ React UI Updates
 
 ---
 
-# 🔒 Security Features
+#  Security Features
 
 - JWT Authentication
 - Password Hashing using bcryptjs
@@ -286,7 +286,7 @@ React UI Updates
 
 ---
 
-# 🚀 Future Enhancements
+#  Future Enhancements
 
 - AI-powered Diet Recommendations
 - Barcode Food Scanner
@@ -299,7 +299,7 @@ React UI Updates
 
 ---
 
-# 📚 Documentation
+#  Documentation
 
 The repository contains detailed documentation for every development stage:
 
@@ -317,13 +317,13 @@ The repository contains detailed documentation for every development stage:
 
 ---
 
-# 🎯 Expected Outcome
+#  Expected Outcome
 
 The Nutrition Assistant application enables users to maintain a healthy lifestyle through efficient meal planning, calorie tracking, nutrition analysis, and personalized diet recommendations. The MERN Stack architecture ensures a scalable, secure, and maintainable full-stack web application.
 
 ---
 
-# 👨‍💻 Authors
+#  Authors
 
 - **SURESHBABU REDDY**
 - **BATTULA HAREESH**
@@ -333,10 +333,8 @@ The Nutrition Assistant application enables users to maintain a healthy lifestyl
 
 ---
 
-# 📄 License
+#  License
 
 This project is developed for educational and learning purposes as part of a **MERN Stack Full-Stack Development Project**.
 
 ---
-
-## ⭐ If you found this project useful, consider giving it a star on GitHub!
